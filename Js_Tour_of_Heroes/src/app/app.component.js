@@ -6,16 +6,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+var HEROES = [
+    { id: 11, name: 'Ferium' },
+    { id: 12, name: 'Pythonic' },
+    { id: 13, name: 'Relastic' },
+    { id: 14, name: 'Celebrium' },
+    { id: 15, name: 'Magneto' },
+    { id: 16, name: 'Telekuta' },
+    { id: 17, name: 'Jasonian' },
+    { id: 18, name: 'Dynamico' },
+    { id: 19, name: 'Soulstealer' },
+    { id: 20, name: 'Fang' }
+];
 var AppComponent = (function () {
     function AppComponent() {
-        this.name = 'Angular';
+        this.title = 'Tour of Heroes';
+        this.heroes = HEROES;
     }
+    AppComponent.prototype.onSelect = function (hero) {
+        this.selectedHero = hero;
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "<h1>Hello {{name}}</h1>",
+        template: "\n    <h1 class=\"title\">{{title}}</h1>\n    <h2 class=\"myheroes\">My Heroes</h2>\n\n    <hero-detail [hero]=\"selectedHero\"></hero-detail>\n\n    <ul class=\"heroes\">\n      <li *ngFor=\"let hero of heroes\"\n        [class.selected]=\"hero === selectedHero\"\n        (click)=\"onSelect(hero)\">\n        <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n      </li>\n    </ul>\n\n  ",
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
